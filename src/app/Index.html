@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Reddo</title>
+    <!-- Not present in the tutorial. Just for basic styling. -->
+    <link rel="stylesheet" type="text/css" href="assets/libs/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/site.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.0/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.0/JSXTransformer.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"></script>
+</head>
+
+<body class="container">
+    <!--
+<div id="application">
+    <style type="text/css">
+    #initializing {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 30%;
+        width: 50%;
+        margin: -10% 0 0 -10%;
+    }
+    
+    #initializing i {
+        font-size: 15em;
+        color: silver;
+    }
+    </style>
+    <div id="initializing">
+        <i class="fa fa-cog fa-spin"></i>
+    </div>
+</div>
+-->
+    <div id="application"></div>
+
+    <div id="navBar"></div>
+
+    <div id="leftSideBar" class="col-md-2">
+        <div id="feeds"></div>
+        <div id="trends"></div>
+    </div>
+    <div id="main" class="col-md-8"></div>
+    <div id="rightSideBar" class="col-md-2"></div>
+    
+    <!--The application-->
+    <script type="text/jsx" src="components/navBar.jsx"></script>
+    <script type="text/jsx" src="components/welcomeBanner.jsx"></script>
+    <script type="text/jsx" src="views/dashboard.jsx"></script>
+    <script type="text/jsx" src="app.jsx"></script>
+</body>
+
+</html>
