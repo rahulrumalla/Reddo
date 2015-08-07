@@ -40,7 +40,7 @@ var QuestionsFeed = React.createClass({
 	render: function(){
 		var questions = this.state.data.map(function(question, index){
 			return (
-				<Question userImageUrl="" questionTitle={question.question} />
+				<Question userImageUrl="" questionTitle={question.question} key={question.id}/>
 				);
 		});
 		return (
