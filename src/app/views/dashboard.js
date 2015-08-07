@@ -4,6 +4,7 @@ var DashBoard = React.createClass({
 			<div>
 				<NavBar />
 				<WelcomeBanner />
+				<QuestionsFeed url="../questions.json" />
 			</div>
 			);
 	}
