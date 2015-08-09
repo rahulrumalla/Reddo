@@ -5,15 +5,17 @@
 		"followCount": 3,
 		"upVoteCount": 10,
 		"downVoteCount": 2,
+		"commentCount": 13,
 		"createDate": "8/2/2015 11:23:09",
 		"createdByUser": "rrumalla"
 	},
 	{
 		"id": 2,
-		"question": "Which is better, anugularJS or ReactJS?",
+		"question": "What is an isomorphic applicaiton?",
 		"followCount": 23,
 		"upVoteCount": 10,
 		"downVoteCount": 1,
+		"commentCount": 13,
 		"createDate": "11/1/2015 16:02:54",
 		"createdByUser": "rrumalla"
 	}

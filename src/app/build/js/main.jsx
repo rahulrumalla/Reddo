@@ -28,6 +28,20 @@ var Question = React.createClass({
 			  <div className="media-body">
 			    <h4 className="media-heading">{this.props.questionTitle}</h4>
 			    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+			  	<div className="actionStrip">
+				  	<span>
+				  		<a className="btn btn-xs btn-primary">Upvote | {this.props.upVoteCount}</a>
+				  	</span>
+				  	<span>
+				  		<a href="">Downvote</a>
+				  	</span>
+				  	<span>
+				  		<a href="">Comments <span className="">{this.props.commentCount}+</span></a>
+				  	</span>
+				  	<span>
+				  		<a href="">Share</a>
+				  	</span>
+				 </div>
 			  </div>
 			  <hr />
 			</div>
@@ -58,7 +72,11 @@ var QuestionsFeed = React.createClass({
 	render: function(){
 		var questions = this.state.data.map(function(question, index){
 			return (
-				<Question userImageUrl="" questionTitle={question.question} key={question.id}/>
+				<Question userImageUrl="" 
+						upVoteCount={question.upVoteCount}
+						commentCount={question.commentCount}
+						questionTitle={question.question} 
+						key={question.id}/>
 				);
 		});
 		return (

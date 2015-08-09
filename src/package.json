@@ -2,6 +2,7 @@
   "name": "Reddo",
   "version": "1.0.0",
   "description": "A lightweight and simple Q&A Site using ReactJS + Flux arch",
+  "repository": "https://github.com/xizmark/Reddo",
   "dependencies": {
     "body-parser": "^1.13.3",
     "bootstrap": "^3.3.5",

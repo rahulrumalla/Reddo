@@ -12,3 +12,10 @@ body
 {
     height: 65px;
 }
+
+.actionStrip span a
+{
+	margin-top: 10px;
+	margin-right: 10px;
+	vertical-align: bottom;
+}
