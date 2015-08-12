@@ -1,4 +1,50 @@
+var Feed = React.createClass({
+	render: function(){
+		return (
+			<li className="">
+				<a href={this.props.feedUrl}>{this.props.feedName}</a>
+			</li>
+			);
+	}
+});
 
+var Feeds = React.createClass({
+	getFeeds: function(){
+		$.ajax({
+	      url: this.props.url,
+	      dataType: 'json',
+	      cache: false,
+	      success: function(data) {
+	        this.setState({data: data});
+	      }.bind(this),
+	      error: function(xhr, status, err) {
+	        console.error(this.props.url, status, err.toString());
+	      }.bind(this)
+	    });
+	},
+	getInitialState: function(){
+		return { data: [] };
+	},
+	componentDidMount: function(){
+		this.getFeeds();
+	},
+	render: function(){
+		var feeds = this.state.data.map(function(feed, index){
+			return (
+				<Feed feedUrl={feed.feedUrl} feedName={feed.feedName} />
+				);
+		});
+
+		return (
+			<div className="" id="feeds">
+				<ul className="">
+				<h4>Feeds</h4>
+					{feeds}
+				</ul>
+			</div>
+			);
+	}
+});
 var NavBar = React.createClass({
     render: function() {
       return (
@@ -10,6 +56,12 @@ var NavBar = React.createClass({
                 <input type="text" className="form-control" placeholder="Search" />
               </div>
             </form>
+            <ul id="navActionBar" className="nav navbar-nav">
+               <li className="active"><a><span className="glyphicon glyphicon-home" aria-hidden="true">&nbsp;</span>Home</a></li>
+               <li><a><span className="glyphicon glyphicon-question-sign">&nbsp;</span>Ask</a></li>
+               <li><a><span className="glyphicon glyphicon-bell">&nbsp;</span>Notifications</a></li>
+               <li><a><span className="glyphicon glyphicon-user">&nbsp;</span>Profile</a></li>
+            </ul>
           </div>
         </nav>
       );
@@ -86,7 +138,53 @@ var QuestionsFeed = React.createClass({
 			);
 	}
 });
+var Trend = React.createClass({
+	render: function(){
+		return (
+			<li className="">
+				<a href={this.props.url}>{this.props.name}</a>
+			</li>
+			);
+	}
+});
 
+var Trends = React.createClass({
+	getTrends: function(){
+		$.ajax({
+	      url: this.props.url,
+	      dataType: 'json',
+	      cache: false,
+	      success: function(data) {
+	        this.setState({data: data});
+	      }.bind(this),
+	      error: function(xhr, status, err) {
+	        console.error(this.props.url, status, err.toString());
+	      }.bind(this)
+	    });
+	},
+	getInitialState: function(){
+		return { data: [] };
+	},
+	componentDidMount: function(){
+		this.getTrends();
+	},
+	render: function(){
+		var trends = this.state.data.map(function(trend, index){
+			return (
+				<Feed feedUrl={trend.url} feedName={trend.name} />
+				);
+		});
+
+		return (
+			<div id="trends">
+				<ul className="">
+				<h4>Trends</h4>
+					{trends}
+				</ul>
+			</div>
+			);
+	}
+});
 var WelcomeBanner = React.createClass({
 	render: function(){
 		return (
@@ -106,7 +204,16 @@ var DashBoard = React.createClass({
 			<div>
 				<NavBar />
 				<WelcomeBanner />
-				<QuestionsFeed url="../questions.json" />
+				<div 	className="container">
+					<div className="row">
+						<div className="col-md-2">
+							<Feeds url="../feeds.json" />
+							<hr />
+							<Trends url="../trends.json" />
+						</div>
+						<QuestionsFeed url="../questions.json" className="col-md-8"/>	
+					</div>
+				</div>
 			</div>
 			);
 	}

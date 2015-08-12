@@ -1,6 +1,6 @@
 body
 {
-  padding-top: 60px;
+  padding-top: 50px;
 }
 
 .media-object
@@ -13,4 +13,14 @@ body
 	margin-top: 10px;
 	margin-right: 10px;
 	vertical-align: bottom;
+}
+
+#feeds ul, #trends ul
+{
+	list-style: none;
+}
+
+#navActionBar
+{
+	float: right;
 }

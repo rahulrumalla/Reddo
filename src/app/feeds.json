@@ -6,5 +6,9 @@
 	{
 		"feedName": "Entertainment",
 		"feedUrl": ""
+	},
+	{
+		"feedName": "Google",
+		"feedUrl": ""
 	}
 ]

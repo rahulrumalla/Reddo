@@ -26,6 +26,12 @@ var config = {
 				],
 			dest: "app/build/css"
 		},
+		icons: {
+			src: [
+					'node_modules/bootstrap/dist/fonts/*'
+			],
+			dest: "app/build/fonts"
+		},
 		img: {
 			src: ["assets/img/*"],
 			dest: "app/build/img"
@@ -37,6 +43,11 @@ gulp.task('styles', function(){
 	return gulp.src(config.paths.css.src)
 		.pipe(concat('main.css'))
 		.pipe(gulp.dest(config.paths.css.dest));
+});
+
+gulp.task('icons', function(){
+	return gulp.src(config.paths.icons.src)
+		.pipe(gulp.dest(config.paths.icons.dest))
 });
 
 gulp.task('depsScripts', function(){
@@ -56,4 +67,4 @@ gulp.task('images', function() {
 		.pipe(gulp.dest(config.paths.img.dest));
 });
 
-gulp.task('default', ['styles', 'depsScripts', 'appScripts', 'images']);
+gulp.task('default', ['styles', 'icons', 'depsScripts', 'appScripts', 'images']);
