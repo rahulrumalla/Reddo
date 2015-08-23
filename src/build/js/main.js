@@ -1,14 +1,14 @@
-var Feed = React.createClass({
+var Feed = React.createClass({displayName: "Feed",
 	render: function(){
 		return (
-			<li className="">
-				<a href={this.props.feedUrl}>{this.props.feedName}</a>
-			</li>
+			React.createElement("li", {className: ""}, 
+				React.createElement("a", {href: this.props.feedUrl}, this.props.feedName)
+			)
 			);
 	}
 });
 
-var Feeds = React.createClass({
+var Feeds = React.createClass({displayName: "Feeds",
 	getFeeds: function(){
 		$.ajax({
 	      url: this.props.url,
@@ -31,77 +31,77 @@ var Feeds = React.createClass({
 	render: function(){
 		var feeds = this.state.data.map(function(feed, index){
 			return (
-				<Feed feedUrl={feed.feedUrl} feedName={feed.feedName} />
+				React.createElement(Feed, {feedUrl: feed.feedUrl, feedName: feed.feedName})
 				);
 		});
 
 		return (
-			<div className="" id="feeds">
-				<ul className="">
-				<h4>Feeds</h4>
-					{feeds}
-				</ul>
-			</div>
+			React.createElement("div", {className: "", id: "feeds"}, 
+				React.createElement("ul", {className: ""}, 
+				React.createElement("h4", null, "Feeds"), 
+					feeds
+				)
+			)
 			);
 	}
 });
-var NavBar = React.createClass({
+var NavBar = React.createClass({displayName: "NavBar",
     render: function() {
       return (
-        <nav className="navbar navbar-default navbar-fixed-top">
-          <div className="container">
-            <a className="navbar-brand" href="#">Reddo</a>
-            <form className="navbar-form navbar-left" role="search">
-              <div className="form-group">
-                <input type="text" className="form-control" placeholder="Search" />
-              </div>
-            </form>
-            <ul id="navActionBar" className="nav navbar-nav">
-               <li className="active"><a><span className="glyphicon glyphicon-home" aria-hidden="true">&nbsp;</span>Home</a></li>
-               <li><a><span className="glyphicon glyphicon-question-sign">&nbsp;</span>Ask</a></li>
-               <li><a><span className="glyphicon glyphicon-bell">&nbsp;</span>Notifications</a></li>
-               <li><a><span className="glyphicon glyphicon-user">&nbsp;</span>Profile</a></li>
-            </ul>
-          </div>
-        </nav>
+        React.createElement("nav", {className: "navbar navbar-default navbar-fixed-top"}, 
+          React.createElement("div", {className: "container"}, 
+            React.createElement("a", {className: "navbar-brand", href: "#"}, "Reddo"), 
+            React.createElement("form", {className: "navbar-form navbar-left", role: "search"}, 
+              React.createElement("div", {className: "form-group"}, 
+                React.createElement("input", {type: "text", className: "form-control", placeholder: "Search"})
+              )
+            ), 
+            React.createElement("ul", {id: "navActionBar", className: "nav navbar-nav"}, 
+               React.createElement("li", {className: "active"}, React.createElement("a", null, React.createElement("span", {className: "glyphicon glyphicon-home", "aria-hidden": "true"}, " "), "Home")), 
+               React.createElement("li", null, React.createElement("a", null, React.createElement("span", {className: "glyphicon glyphicon-question-sign"}, " "), "Ask")), 
+               React.createElement("li", null, React.createElement("a", null, React.createElement("span", {className: "glyphicon glyphicon-bell"}, " "), "Notifications")), 
+               React.createElement("li", null, React.createElement("a", null, React.createElement("span", {className: "glyphicon glyphicon-user"}, " "), "Profile"))
+            )
+          )
+        )
       );
     }
   }
 );
-var Question = React.createClass({
+var Question = React.createClass({displayName: "Question",
 	render: function() {
 		return (
-			<div className="media">
-			  <div className="media-left media-middle">
-			    <a href="#">
-			      <img className="media-object" src="../build/img/reactjs.png" />
-			    </a>
-			  </div>
-			  <div className="media-body">
-			    <h4 className="media-heading">{this.props.questionTitle}</h4>
-			    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-			  	<div className="actionStrip">
-				  	<span>
-				  		<a className="btn btn-xs btn-primary">Upvote | {this.props.upVoteCount}</a>
-				  	</span>
-				  	<span>
-				  		<a href="">Downvote</a>
-				  	</span>
-				  	<span>
-				  		<a href="">Comments <span className="">{this.props.commentCount}+</span></a>
-				  	</span>
-				  	<span>
-				  		<a href="">Share</a>
-				  	</span>
-				 </div>
-			  </div>
-			  <hr />
-			</div>
+			React.createElement("div", {className: "media"}, 
+			  React.createElement("div", {className: "media-left media-middle"}, 
+			    React.createElement("a", {href: "#"}, 
+			      React.createElement("img", {className: "media-object", src: "../img/reactjs.png"})
+			    )
+			  ), 
+			  React.createElement("div", {className: "media-body"}, 
+			    React.createElement("h4", {className: "media-heading"}, this.props.questionTitle), 
+			    "Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.", 
+			  	React.createElement("div", {className: "actionStrip"}, 
+				  	React.createElement("span", null, 
+				  		React.createElement("a", {className: "btn btn-xs btn-primary"}, "Upvote | ", this.props.upVoteCount)
+				  	), 
+				  	React.createElement("span", null, 
+				  		React.createElement("a", {href: ""}, "Downvote")
+				  	), 
+				  	React.createElement("span", null, 
+				  		React.createElement("a", {href: ""}, "Comments ", React.createElement("span", {className: ""}, this.props.commentCount, "+"))
+				  	), 
+				  	React.createElement("span", null, 
+				  		React.createElement("a", {href: ""}, "Share")
+				  	)
+				 )
+			  ), 
+			  React.createElement("hr", null)
+			)
 		);
 	}
 });
 
-var QuestionsFeed = React.createClass({
+var QuestionsFeed = React.createClass({displayName: "QuestionsFeed",
 	getQuestions: function() {
 		$.ajax({
 	      url: this.props.url,
@@ -124,31 +124,31 @@ var QuestionsFeed = React.createClass({
 	render: function(){
 		var questions = this.state.data.map(function(question, index){
 			return (
-				<Question userImageUrl="" 
-						upVoteCount={question.upVoteCount}
-						commentCount={question.commentCount}
-						questionTitle={question.question} 
-						key={question.id}/>
+				React.createElement(Question, {userImageUrl: "", 
+						upVoteCount: question.upVoteCount, 
+						commentCount: question.commentCount, 
+						questionTitle: question.question, 
+						key: question.id})
 				);
 		});
 		return (
-			<div id="questionsFeed" className="col-md-8">
-				{questions}
-			</div>
+			React.createElement("div", {id: "questionsFeed", className: "col-md-8"}, 
+				questions
+			)
 			);
 	}
 });
-var Trend = React.createClass({
+var Trend = React.createClass({displayName: "Trend",
 	render: function(){
 		return (
-			<li className="">
-				<a href={this.props.url}>{this.props.name}</a>
-			</li>
+			React.createElement("li", {className: ""}, 
+				React.createElement("a", {href: this.props.url}, this.props.name)
+			)
 			);
 	}
 });
 
-var Trends = React.createClass({
+var Trends = React.createClass({displayName: "Trends",
 	getTrends: function(){
 		$.ajax({
 	      url: this.props.url,
@@ -171,50 +171,50 @@ var Trends = React.createClass({
 	render: function(){
 		var trends = this.state.data.map(function(trend, index){
 			return (
-				<Feed feedUrl={trend.url} feedName={trend.name} />
+				React.createElement(Feed, {feedUrl: trend.url, feedName: trend.name})
 				);
 		});
 
 		return (
-			<div id="trends">
-				<ul className="">
-				<h4>Trends</h4>
-					{trends}
-				</ul>
-			</div>
+			React.createElement("div", {id: "trends"}, 
+				React.createElement("ul", {className: ""}, 
+				React.createElement("h4", null, "Trends"), 
+					trends
+				)
+			)
 			);
 	}
 });
-var WelcomeBanner = React.createClass({
+var WelcomeBanner = React.createClass({displayName: "WelcomeBanner",
 	render: function(){
 		return (
-		    <div className="jumbotron center-block text-center">
-		        <h3 className="">Welcome to REDDO</h3>
-		        <p>
-		            Ask anything.
-		            <br/> This is a Q and A site using ReactJS and NodeJS
-		        </p>
-		    </div>
+		    React.createElement("div", {className: "jumbotron center-block text-center"}, 
+		        React.createElement("h3", {className: ""}, "Welcome to REDDO"), 
+		        React.createElement("p", null, 
+		            "Ask anything.", 
+		            React.createElement("br", null), " This is a Q and A site using ReactJS and NodeJS"
+		        )
+		    )
 		);
 	}
 });
-var DashBoard = React.createClass({
+var DashBoard = React.createClass({displayName: "DashBoard",
 	render: function(){
 		return (
-			<div>
-				<NavBar />
-				<WelcomeBanner />
-				<div 	className="container">
-					<div className="row">
-						<div className="col-md-2">
-							<Feeds url="../feeds.json" />
-							<hr />
-							<Trends url="../trends.json" />
-						</div>
-						<QuestionsFeed url="../questions.json" className="col-md-8"/>	
-					</div>
-				</div>
-			</div>
+			React.createElement("div", null, 
+				React.createElement(NavBar, null), 
+				React.createElement(WelcomeBanner, null), 
+				React.createElement("div", {	className: "container"}, 
+					React.createElement("div", {className: "row"}, 
+						React.createElement("div", {className: "col-md-2"}, 
+							React.createElement(Feeds, {url: "../feeds.json"}), 
+							React.createElement("hr", null), 
+							React.createElement(Trends, {url: "../trends.json"})
+						), 
+						React.createElement(QuestionsFeed, {url: "../questions.json", className: "col-md-8"})	
+					)
+				)
+			)
 			);
 	}
 });
@@ -223,7 +223,7 @@ var DashBoard = React.createClass({
 //require('views/dashboard.jsx');
 
 React.render(
-  <DashBoard />,
+  React.createElement(DashBoard, null),
   document.getElementById('application')
   );
 

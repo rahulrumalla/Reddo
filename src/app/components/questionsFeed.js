@@ -4,7 +4,7 @@ var Question = React.createClass({
 			<div className="media">
 			  <div className="media-left media-middle">
 			    <a href="#">
-			      <img className="media-object" src="../build/img/reactjs.png" />
+			      <img className="media-object" src="../img/reactjs.png" />
 			    </a>
 			  </div>
 			  <div className="media-body">
